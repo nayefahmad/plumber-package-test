@@ -21,8 +21,10 @@
 
 #' * Step 3: Run `pr$run(port = 8000)` to test the function on `localhost`
 
-#' * Step 4: In your browser, try this:
-#' `localhost:8000/echo?msg="test message"`
+#' * Step 4: In your browser, try this: `localhost:8000/echo?msg="test
+#' message"`. Note that "echo" is the endpoint that we specified in the function
+#' definition. We could change it to something else. Arguments are preceded by
+#' question marks.
 
 
 #+ plumber, eval=FALSE 
@@ -30,3 +32,22 @@ library(plumber)
 pr <- plumb(here::here("src", 
                        "plumber_function.R"))
 pr$run(port = 8000)
+
+
+#' \  
+#' 
+#' ### Let's try with another function: 
+#' 
+
+#+ random, eval=FALSE 
+pr2 <- plumb(here::here("src", 
+                        "random_plumber-function.R"))
+pr2$run(port = 8000)
+
+#+ 
+#' Now try `http://localhost:8000/random?number=42`
+#' 
+#' ### Todo: 
+#' 
+#' Why is this just returning the argument to me instead of returning a 
+#' random number?

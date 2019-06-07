@@ -51,3 +51,31 @@ pr2$run(port = 8000)
 #' 
 #' Why is this just returning the argument to me instead of returning a 
 #' random number?
+#' 
+#' \  
+#' 
+#' ### Deploying on Digital Ocean droplet: 
+#' 
+#+ droplet, eval=FALSE 
+library(analogsea)  # interface to Digital Ocean 
+account()
+
+# Note that if you want to connect over SSH to a droplet you have to create the
+# droplet with an SSH key with the ssh_keys parameter.
+droplet_create(region = "sfo2")
+
+# Waiting for create ....................
+# <droplet>ConvexAcreage (146587197)
+# IP:        159.89.139.44
+# Status:    new
+# Region:    San Francisco 2
+# Image:     14.04.5 x64
+# Size:      512mb
+# Volumes: 
+
+keys()
+
+do_provision(droplet = "ConvexAcreage", 
+             region = "sfo2", 
+             ssh_keys = "24775763")
+

@@ -40,12 +40,13 @@ pr$run(port = 8000)
 #' 
 
 #+ random, eval=FALSE 
+library(plumber)
 pr2 <- plumb(here::here("src", 
                         "random_plumber-function.R"))
 pr2$run(port = 8000)
 
 #+ 
-#' Now try `http://localhost:8000/random?number=42`
+#' Now try this in browser: `localhost:8000/random?number=42`
 #' 
 #' ### Todo: 
 #' 
@@ -53,7 +54,12 @@ pr2$run(port = 8000)
 #' random number?
 #' 
 #' \  
-#' 
+
+
+
+
+
+#*********************************************************
 #' ### Deploying on Digital Ocean droplet: 
 #' 
 #+ droplet, eval=FALSE 

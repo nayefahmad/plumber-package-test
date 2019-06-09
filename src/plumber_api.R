@@ -12,9 +12,11 @@
 #' 
 #' ### Quickstart guide: 
 
-#' * Step 1: Write a function that accepts 0 or more arguments. Here, the
-#' function is saved in the file `plumber_function.R`. Do not assign the
-#' function to a function name.
+#' * Step 1: Write a function that accepts 0 or more arguments. Here, there are
+#' functions saved in the files `plumber_function.R`,
+#' `random_plumber-function.R`, and `iris-regression_function.R`. Do not assign
+#' the API function to a function name. This function can come at the end of an
+#' analysis R script, using objects defined in that script.
   
 #' * Step 2: Write an R script that loads `plumber` package and passes the name
 #' of the function file to the `plumb()` function
@@ -48,10 +50,24 @@ pr2$run(port = 8000)
 #+ 
 #' Now try this in browser: `localhost:8000/random?number=42`
 #' 
-#' ### Todo: 
 #' 
-#' Why is this just returning the argument to me instead of returning a 
-#' random number?
+#' \  
+
+
+#' \
+#'
+#' ### Let's try with a more complex function, with data from an R script: 
+#' 
+
+#+ plumber-iris, eval=FALSE 
+library(plumber)
+pr3 <- plumb(here::here("src", 
+                        "iris-regression_function.R"))
+pr3$run(port = 8000)
+
+#+ 
+#' Now try this in browser: `localhost:8000/iris?petal_width=1`
+#' 
 #' 
 #' \  
 
@@ -59,8 +75,17 @@ pr2$run(port = 8000)
 
 
 
-#*********************************************************
-#' ### Deploying on Digital Ocean droplet: 
+
+
+
+
+
+
+#' \  
+#' \  
+
+#' 
+#' ### Deploying on Digital Ocean droplet (todo:): 
 #' 
 #+ droplet, eval=FALSE 
 library(analogsea)  # interface to Digital Ocean 
